@@ -1,0 +1,25 @@
+# MS-SLR: Motion-Signature Sign Language Recognition
+# Python dependencies for real-time sign language recognition system
+# Tested on Python 3.8-3.11
+
+# Core dependencies
+opencv-python>=4.8.0        # Computer vision and video processing
+mediapipe>=0.10.0           # Hand landmark detection
+numpy>=1.24.0               # Numerical operations and array processing
+scikit-learn>=1.3.0         # Machine learning (ExtraTreesClassifier)
+
+# Audio and speech
+pyttsx3>=2.90               # Text-to-speech synthesis
+
+# Optional: AI grammar correction (requires API key)
+google-generativeai>=0.3.0  # Google Gemini API for grammar correction
+
+# Development/Training dependencies (optional for inference-only deployment)
+# pandas>=2.0.0             # Data processing during training
+# matplotlib>=3.7.0         # Visualization and analysis
+# seaborn>=0.12.0           # Statistical plotting
+# tqdm>=4.65.0              # Progress bars for training
+
+# Note: For GPU acceleration (optional, not required):
+# - System runs efficiently on CPU (<100ms latency)
+# - If desired, install: tensorflow-gpu or pytorch with CUDA support

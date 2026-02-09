@@ -1,0 +1,74 @@
+{
+  "_comment": "MS-SLR Configuration Template",
+  "_instructions": "Copy this file to config.json and fill in your values",
+  
+  "gemini_api_key": "YOUR_GOOGLE_GEMINI_API_KEY_HERE",
+  "_gemini_instructions": "Optional - get free API key from https://makersuite.google.com/app/apikey",
+  
+  "confidence_threshold": 0.32,
+  "_confidence_comment": "Minimum confidence for prediction acceptance (0.0-1.0). Lower = more sensitive, higher = more selective",
+  
+  "smoothing_window": 18,
+  "_smoothing_comment": "Number of frames for temporal averaging. Higher = smoother but slower response",
+  
+  "stability_frames": 20,
+  "_stability_comment": "Consecutive frames required before committing prediction. Higher = more stable but slower",
+  
+  "camera_indices": [1, 0, 2],
+  "_camera_comment": "Camera indices to try in order (varies by system)",
+  
+  "use_motion_signature": true,
+  "_motion_comment": "Enable temporal feature extraction (recommended for accuracy)",
+  
+  "motion_window_size": 10,
+  "_motion_window_comment": "Frames for motion signature computation (10 = 333ms @ 30 FPS)",
+  
+  "two_hand_mode": true,
+  "_two_hand_comment": "Track both hands (recommended, required for two-hand signs)",
+  
+  "model_path": "model_mslr_150.p",
+  "_model_comment": "Path to trained classifier file",
+  
+  "sentence_buffer_size": 20,
+  "_buffer_comment": "Maximum words to keep in sentence before truncating",
+  
+  "grammar_interval_sec": 4,
+  "_grammar_interval_comment": "Minimum seconds between auto-grammar corrections",
+  
+  "grammar_max_calls_per_min": 12,
+  "_grammar_rate_comment": "Rate limit for grammar API (respect free tier limits)",
+  
+  "_tuning_tips": [
+    "Lower confidence_threshold (0.25) for more detections but more false positives",
+    "Increase stability_frames (25+) for very stable but slower detection",
+    "Disable motion_signature for faster inference on weak hardware (accuracy will drop)",
+    "Adjust smoothing_window based on signing speed (faster = lower value)"
+  ],
+  
+  "_performance_presets": {
+    "high_accuracy": {
+      "confidence_threshold": 0.40,
+      "smoothing_window": 20,
+      "stability_frames": 25,
+      "use_motion_signature": true
+    },
+    "balanced": {
+      "confidence_threshold": 0.32,
+      "smoothing_window": 18,
+      "stability_frames": 20,
+      "use_motion_signature": true
+    },
+    "low_latency": {
+      "confidence_threshold": 0.28,
+      "smoothing_window": 12,
+      "stability_frames": 15,
+      "use_motion_signature": true
+    },
+    "minimal_hardware": {
+      "confidence_threshold": 0.35,
+      "smoothing_window": 15,
+      "stability_frames": 18,
+      "use_motion_signature": false
+    }
+  }
+}
