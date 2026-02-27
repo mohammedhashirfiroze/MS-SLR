@@ -52,6 +52,18 @@ st.markdown("""
 # Initialize Claude
 @st.cache_resource
 def init_claude():
+    api_key = None
+    
+    # Try Streamlit secrets first (for cloud deployment)
+    try:
+        api_key = st.secrets.get("claude_api_key", "")
+        if api_key:
+            client = anthropic.Anthropic(api_key=api_key)
+            return client
+    except:
+        pass
+    
+    # Fallback to config.json (for local deployment)
     try:
         config_path = Path("../config.json")
         with open(config_path, "r") as f:
@@ -61,10 +73,10 @@ def init_claude():
         if api_key:
             client = anthropic.Anthropic(api_key=api_key)
             return client
-        else:
-            st.error("❌ No Claude API key found in config.json")
-    except Exception as e:
-        st.error(f"❌ Error loading Claude API: {e}")
+    except:
+        pass
+    
+    st.error("❌ No Claude API key found. Check Streamlit Secrets or config.json")
     return None
 
 # Load project knowledge base
