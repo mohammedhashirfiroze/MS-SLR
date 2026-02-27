@@ -8,6 +8,10 @@ mediapipe>=0.10.0           # Hand landmark detection
 numpy>=1.24.0               # Numerical operations and array processing
 scikit-learn>=1.3.0         # Machine learning (ExtraTreesClassifier)
 
+# Interactive presentation agent
+anthropic                   # Claude API for interactive agent
+streamlit                   # Web framework for presentation agent
+
 # Audio and speech
 pyttsx3>=2.90               # Text-to-speech synthesis
 
